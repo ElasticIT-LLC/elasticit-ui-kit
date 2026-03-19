@@ -1,6 +1,6 @@
 {
   "name": "@elasticit-llc/ui-kit",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Optional React component library for ElasticIT portal apps",
   "type": "module",
   "main": "./dist/index.cjs",
