@@ -2,3 +2,6 @@ node_modules/
 dist/
 *.tsbuildinfo
 .playwright-mcp/
+.env
+.env.local
+.env.onboard
