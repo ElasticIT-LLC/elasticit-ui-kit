@@ -1,23 +1,38 @@
+import type { ReactNode } from 'react';
+
 interface KPICardProps {
   label: string;
   value: string | number;
+  detail?: string;
+  icon?: ReactNode;
+  valueColor?: string;
   trend?: string;
   trendDirection?: 'up' | 'down' | 'neutral';
 }
 
-export function KPICard({ label, value, trend, trendDirection = 'neutral' }: KPICardProps) {
+export function KPICard({ label, value, detail, icon, valueColor, trend, trendDirection = 'neutral' }: KPICardProps) {
   const trendColor = {
-    up: 'text-green-600 dark:text-green-400',
-    down: 'text-red-600 dark:text-red-400',
-    neutral: 'text-gray-500 dark:text-gray-400',
+    up: 'text-green-400',
+    down: 'text-red-400',
+    neutral: 'text-shell-400',
   }[trendDirection];
 
   return (
-    <div className="bg-white dark:bg-gray-900 rounded-lg border dark:border-gray-700 p-5">
-      <p className="text-sm font-medium text-gray-500 dark:text-gray-400">{label}</p>
-      <div className="flex items-baseline gap-2 mt-1">
-        <p className="text-2xl font-semibold text-gray-900 dark:text-white">{value}</p>
-        {trend && <span className={`text-sm font-medium ${trendColor}`}>{trend}</span>}
+    <div className="rounded-xl border border-shell-700 bg-shell-800 p-5">
+      <div className="flex items-start justify-between">
+        <div>
+          <p className="text-xs font-medium text-shell-400 uppercase tracking-wider">{label}</p>
+          <div className="flex items-baseline gap-2 mt-2">
+            <p className={`text-2xl font-bold ${valueColor || 'text-shell-100'}`}>{value}</p>
+            {trend && <span className={`text-sm font-medium ${trendColor}`}>{trend}</span>}
+          </div>
+          {detail && <p className="text-xs text-shell-400 mt-1">{detail}</p>}
+        </div>
+        {icon && (
+          <div className="flex items-center justify-center w-10 h-10 rounded-xl bg-shell-700/50 text-shell-300 flex-shrink-0">
+            {icon}
+          </div>
+        )}
       </div>
     </div>
   );
