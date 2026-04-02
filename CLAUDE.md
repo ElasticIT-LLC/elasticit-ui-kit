@@ -382,3 +382,18 @@ npm publish        # Publish to GitHub Packages
 - Components emit Tailwind class strings — the host shell's CSS build generates the actual styles
 - Builds to `dist/` in ESM (`index.js`) + CJS (`index.cjs`) with TypeScript declarations
 - Published to GitHub Packages under `@elasticit-llc` scope
+
+## AI Tooling
+
+### Active Hooks
+- **Pre-commit guard**: Blocks commits with secrets (`.env`, credentials) and TypeScript errors
+- **Color token validation** (ui-kit only): Warns about hardcoded colors in TSX files
+
+### Available Commands
+- `/audit` — Repo health check (run from elasticit-portal)
+- `/publish` — Version bump + build + test + publish (run from elasticit-portal)
+
+### Common Mistakes to Avoid
+- Hardcoding hex colors instead of using `shell-*`/`brand-*` tokens
+- Putting `react` in `dependencies` instead of `peerDependencies`
+- Forgetting to update barrel exports in `src/index.ts` when adding new features
